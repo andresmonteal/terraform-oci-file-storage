@@ -12,7 +12,7 @@ variable "compartment_id" {
 variable "display_name" {
   description = "(Optional) (Updatable) A user-friendly name. It does not have to be unique, and it is changeable."
   type        = string
-  default = null
+  default     = null
 }
 
 variable "freeform_tags" {
@@ -36,5 +36,5 @@ variable "exports" {
 variable "mount_target_id" {
   description = "(Required) (Updatable) The OCID of the mount target that the export set is associated with."
   type        = string
-  default = null
+  default     = null
 }

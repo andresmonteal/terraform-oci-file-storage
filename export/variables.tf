@@ -8,13 +8,13 @@ variable "mount_target_id" {
 variable "display_name" {
   description = "(Optional) (Updatable) A user-friendly name. It does not have to be unique, and it is changeable."
   type        = string
-  default = null
+  default     = null
 }
 
 variable "file_system_id" {
   description = "(Required) The OCID of this export's file system."
   type        = string
-  default = null
+  default     = null
 }
 
 variable "paths" {

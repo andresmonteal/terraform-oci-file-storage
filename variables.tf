@@ -23,7 +23,7 @@ variable "subnet_id" {
 variable "display_name" {
   description = "(Optional) (Updatable) A user-friendly name. It does not have to be unique, and it is changeable."
   type        = string
-  default = null
+  default     = null
 }
 
 variable "freeform_tags" {
