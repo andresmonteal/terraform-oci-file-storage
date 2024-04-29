@@ -10,12 +10,38 @@ variable "ad_number" {
 }
 
 variable "compartment_id" {
-  description = "(Required) (Updatable) The OCID of the compartment in which to create the file storage resources."
+  description = "compartment id where to create all resources"
   type        = string
+  default     = null
+}
+
+variable "compartment" {
+  description = "compartment name where to create all resources"
+  type        = string
+  default     = null
+}
+
+variable "network_cmp" {
+  description = "Compartment name for networking resources"
+  type        = string
+  default     = null
+}
+
+variable "network_cmp_id" {
+  description = "Compartment id for networking resources"
+  type        = string
+  default     = null
 }
 
 variable "subnet_id" {
   description = "(Optional) The OCID of the regional subnet in which to place the file storage resources."
+  default     = ""
+  type        = string
+}
+
+variable "subnet_name" {
+  description = "Virtual cloud network subnet name"
+  default     = ""
   type        = string
 }
 

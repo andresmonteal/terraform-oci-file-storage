@@ -9,14 +9,17 @@ locals {
     for i in data.oci_identity_availability_domains.ad.availability_domains : i.name
   ]
   ad_number = element(local.ADs, var.ad_number - 1)
+  compartment_id       = try(data.oci_identity_compartments.compartment[0].compartments[0].id, var.compartment_id)
+  network_cmp_id          = try(data.oci_identity_compartments.network[0].compartments[0].id, var.network_cmp_id)
+  subnet_id = data.oci_core_subnets.subnets.subnets[0].id
 }
 
 # This resource provides the Mount Target resource in Oracle Cloud Infrastructure File Storage service.
 resource "oci_file_storage_mount_target" "main" {
   #Required
   availability_domain = local.ad_number
-  compartment_id      = var.compartment_id
-  subnet_id           = var.subnet_id
+  compartment_id      = local.compartment_id
+  subnet_id           = local.subnet_id
 
   display_name = var.display_name
 
@@ -33,7 +36,7 @@ module "file_system" {
 
   #Required
   availability_domain = local.ad_number
-  compartment_id      = data.oci_identity_compartments.cmp_lvl3[each.key].compartments[0].id
+  compartment_id      = local.compartment_id
   display_name        = each.key
   mount_target_id     = oci_file_storage_mount_target.main.id
 
